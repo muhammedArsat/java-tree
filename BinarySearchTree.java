@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTree {
 
     private static class TreeNode{
@@ -155,5 +158,34 @@ public class BinarySearchTree {
         return min;
     }
 
+
+    public void serialize(){
+        if(root == null) {
+            System.out.println("Empty Tree");
+            return;
+        }
+        Queue <TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        StringBuilder string = new StringBuilder();
+        while(!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            if(node == null){
+                string.append("#$"); continue;
+            }
+            string.append(Integer.toString(node.val));
+            string.append("$");
+
+            queue.offer(node.left);
+
+
+
+            queue.offer(node.right);
+
+        }
+        string.deleteCharAt(string.length()-1);
+        String serialized = string.toString();
+        System.out.println(serialized);
+
+    }
 
 }
