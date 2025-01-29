@@ -158,7 +158,6 @@ public class BinarySearchTree {
         return min;
     }
 
-
     public void serialize(){
         if(root == null) {
             System.out.println("Empty Tree");
@@ -187,7 +186,7 @@ public class BinarySearchTree {
         System.out.println(serialized);
 
     }
-    TreeNode head ;
+
     public void deSerialize(String s) {
         String word[] = s.split("\\$");
 
@@ -218,7 +217,7 @@ public class BinarySearchTree {
         }
     }
 
-public void levelOrderTraversal(){
+    public void levelOrderTraversal(){
     Queue<TreeNode> q = new LinkedList<>();
     q.offer(root);
 
@@ -229,6 +228,7 @@ public void levelOrderTraversal(){
         if(node.right != null) q.offer(node.right);
 
     }
+    System.out.println();
 }
 
 
