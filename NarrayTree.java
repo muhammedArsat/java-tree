@@ -12,6 +12,7 @@ public class NarrayTree {
     }
 
     TreeNode root;
+    
     NarrayTree(){
         this.root = null;
     }
@@ -44,7 +45,7 @@ public class NarrayTree {
     }
 
     void preOrderRecurssion(TreeNode root){
-        if(root == null) return;
+        if(root == null) return ;
         System.out.print(root.val+" ");
         for(int i = 0; i < root.children.size(); i++)
              preOrderRecurssion(root.children.get(i));
@@ -66,6 +67,27 @@ public class NarrayTree {
         System.out.print(root.val+" ");
     }
 
+    void levelOrderTraversal(){
+        List<Integer> levelOrder  = levelOrderTraversalRecurssion(root);
+        System.out.println(levelOrder);
+    }
+    List<Integer> levelOrderTraversalRecurssion(TreeNode root){
+
+        List<Integer> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            result.add(node.val);
+            for(int i =0; i < node.children.size(); i++){
+                queue.offer(node.children.get(i));
+            }
+        }
+
+
+        return result;
+    }
 
 
 

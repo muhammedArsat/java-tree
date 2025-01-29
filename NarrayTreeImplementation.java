@@ -5,5 +5,7 @@ public class NarrayTreeImplementation {
         narrayTree.ConstructNarrayTree();
         narrayTree.preOrderTraversal();
         narrayTree.postOrder();
+        System.out.println();
+        narrayTree.levelOrderTraversal();
     }
 }
