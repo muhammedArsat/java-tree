@@ -187,5 +187,51 @@ public class BinarySearchTree {
         System.out.println(serialized);
 
     }
+    TreeNode head ;
+    public void deSerialize(String s) {
+        String word[] = s.split("\\$");
 
+        if (word.length == 0 || word[0].equals("#")) {
+            root = null;
+            return;
+        }
+
+        root = new TreeNode(Integer.parseInt(word[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        int index = 1;
+        while (!queue.isEmpty()) {
+            TreeNode parent = queue.poll();
+
+            if (index < word.length && !word[index].equals("#")) {
+                parent.left = new TreeNode(Integer.parseInt(word[index]));
+                queue.offer(parent.left);
+            }
+            index++;
+
+            if (index < word.length && !word[index].equals("#")) {
+                parent.right = new TreeNode(Integer.parseInt(word[index]));
+                queue.offer(parent.right);
+            }
+            index++;
+        }
+    }
+
+public void levelOrderTraversal(){
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+
+    while(!q.isEmpty()){
+        TreeNode node = q.poll();
+        System.out.print(node.val +" ");
+        if(node.left != null) q.offer(node.left);
+        if(node.right != null) q.offer(node.right);
+
+    }
 }
+
+
+
+
+     }

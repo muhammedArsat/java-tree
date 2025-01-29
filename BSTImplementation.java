@@ -10,7 +10,10 @@ public class BSTImplementation {
         binarySearchTree.insert(25);
         binarySearchTree.insert(60);
         binarySearchTree.insert(90);
-      
+
         binarySearchTree.serialize();
+        String s = "50$20$79$10$25$60$90$#$#$#$#$#$#$#$#";
+        binarySearchTree.deSerialize(s);
+        binarySearchTree.levelOrderTraversal();
     }
 }
