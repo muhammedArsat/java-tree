@@ -7,5 +7,7 @@ public class NarrayTreeImplementation {
         narrayTree.postOrder();
         System.out.println();
         narrayTree.levelOrderTraversal();
+        System.out.println();
+        narrayTree.zigzag();
     }
 }

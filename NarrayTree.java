@@ -12,7 +12,7 @@ public class NarrayTree {
     }
 
     TreeNode root;
-    
+
     NarrayTree(){
         this.root = null;
     }
@@ -22,17 +22,21 @@ public class NarrayTree {
     void ConstructNarrayTree(){
         this.root = new TreeNode(1);
         this.root.children.add(new TreeNode(2));
-        this.root.children.get(0).children.add(new TreeNode(3));
-        this.root.children.get(0).children.add(new TreeNode(4));
+        this.root.children.get(0).children.add(new TreeNode(5));
         this.root.children.get(0).children.add(new TreeNode(6));
+        this.root.children.get(0).children.add(new TreeNode(7));
 
 
-        this.root.children.add(new TreeNode(5));
-        this.root.children.get(1).children.add(new TreeNode(7));
+        this.root.children.add(new TreeNode(3));
+        this.root.children.get(1).children.add(new TreeNode(9));
+        this.root.children.get(1).children.add(new TreeNode(10));
 
-        this.root.children.add(new TreeNode(8));
-        this.root.children.get(2).children.add(new TreeNode(9));
-        this.root.children.get(2).children.add(new TreeNode(11));
+
+        this.root.children.add(new TreeNode(4));
+        this.root.children.get(2).children.add(new TreeNode(12));
+        this.root.children.get(2).children.add(new TreeNode(13));
+        this.root.children.get(2).children.add(new TreeNode(15));
+
     }
 
 
@@ -90,7 +94,39 @@ public class NarrayTree {
     }
 
 
+void zigzag(){
+    List<Integer> zigzaged = zigzagRecurrsion(root);
+    System.out.println(zigzaged);
+}
 
+
+List<Integer> zigzagRecurrsion( TreeNode root){
+    boolean isReversed = false;
+    Deque<TreeNode> queue = new LinkedList<>();
+    queue.offer(root);
+List<Integer> result = new ArrayList<>();
+    while(!queue.isEmpty()){
+
+        if(!isReversed){
+
+        TreeNode node  = queue.pollFirst();
+        result.add(node.val);
+            for(int i = 0; i < node.children.size(); i++){
+                queue.addFirst(node.children.get(i));
+            }
+        }else{
+
+        TreeNode node  = queue.poll();
+            result.add(node.val);
+            for(int i = 0; i < node.children.size();i++){
+                queue.offer(node.children.get(i));
+            }
+        }
+        isReversed = !isReversed;
+    }
+
+    return result;
+}
 
 
 
